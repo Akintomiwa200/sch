@@ -1,0 +1,45 @@
+{
+    "name": "your-vendor-name/openlearn",
+    "description": "An online learning platform",
+    "type": "project",
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.3", // For environment variable management
+        "monolog/monolog": "^2.3", // For logging
+        "firebase/php-jwt": "^5.5", // For JWT authentication
+        "swiftmailer/swiftmailer": "^6.0", // For sending emails
+        "respect/validation": "^2.2" // For input validation
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5", // For unit testing
+        "mockery/mockery": "^1.4" // For mocking in tests
+    },
+    "autoload": {
+        "psr-4": {
+            "OpenLearn\\": "lib/" // Autoload your custom libraries
+        },
+        "files": [
+            "includes/functions.php" // Autoload helper functions
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenLearn\\Tests\\": "tests/" // Autoload test classes
+        }
+    },
+    "scripts": {
+        "test": "phpunit", // Run tests
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
