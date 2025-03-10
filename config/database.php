@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db   = 'openlearn';
+$db   = 'school';
 $user = 'root';
-$pass = '';
+$pass = 'admin';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

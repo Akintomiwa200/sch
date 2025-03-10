@@ -51,4 +51,11 @@ session_start();
     </nav>
 
     <!-- Auth Modal (Same as previous implementation) -->
-    <?php include 'auth_modal.php'; ?></body>
+    <?php include 'auth_modal.php'; ?>
+
+    <!-- Add jQuery and Bootstrap JS here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is loaded -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> <!-- Ensure Bootstrap JS is loaded -->
+    <script src="/js/auth.js"></script> <!-- Your custom JS -->
+</body>
+</html>

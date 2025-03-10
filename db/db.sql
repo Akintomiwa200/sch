@@ -1,5 +1,5 @@
-CREATE DATABASE openlearn;
-USE openlearn;
+CREATE DATABASE school;
+USE school;
 
 CREATE TABLE instructors (
     id INT PRIMARY KEY AUTO_INCREMENT,

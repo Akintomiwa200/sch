@@ -1,202 +1,250 @@
+<?php
+// index.php - The new homepage of your website
+?>
 
-<div class="modal fade" id="myModal" tabindex="-1" autocomplete="off" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Login to OpenLearn&nbsp;(For Instructors Only)</h4>
-				</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to OpenLearn</title>
 
-				<div class="modal-body">
-					<form id="login-form" method="POST" autocomplete="off">
-						<div class="form-group">
-								<b>Email address</b>
-								<input type="email" name="instEmail" class="form-control" id="instEmail" placeholder="Enter email">
-								<span class="help-block" id="error"></span>
-							</div>
+    <!-- Add any CSS libraries or custom styles for the homepage -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation bar for the homepage -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">OpenLearn</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.php">Courses</a>
+                    </li>
+                    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Account
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- If the user is logged in -->
+            <li><a class="dropdown-item" href="profile.php">Profile</a></li> <!-- Profile link -->
+            <li><a class="dropdown-item" href="logout.php">Logout</a></li> <!-- Logout link -->
+        <?php else: ?>
+            <!-- If the user is not logged in -->
+            <li><a class="dropdown-item" href="login.php">Login</a></li> <!-- Login link -->
+            <li><a class="dropdown-item" href="signup.php">Sign Up</a></li> <!-- Sign up link -->
+        <?php endif; ?>
+    </ul>
+</li>
 
-							<div class="form-group">
-								<b>Password</b>
-								<input type="password" name="instPassword" class="form-control" id="instPassword" placeholder="Password">
-								<span class="help-block" id="error"></span>
-							</div>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-							<div class="form-check">
-								<label class="form-check-label">
-									<input type="checkbox" id="rememberMe"class="form-check-input">&nbsp;Remember me
-								</label>
-							</div>
-							<div id="errorDiv"></div> 
-				</div>
+    <!-- Main content area for the homepage -->
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1>Welcome to OpenLearn!</h1>
+            <p>Your path to free online courses. Explore thousands of courses and become an expert!</p>
+            <a href="courses.php" class="btn btn-primary">Browse Courses</a>
+        </div>
 
-				<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" id="btn-login" class="btn btn-primary">Login</button>
-				</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--Modal for login ends-->
+        <!-- Featured Courses Section -->
+        <div class="mt-5">
+            <h2 class="text-center">Featured Courses</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/course1.jpg" class="card-img-top" alt="Course 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Course Title 1</h5>
+                            <p class="card-text">Short description of Course 1.</p>
+                            <a href="view-course.php?course_id=1" class="btn btn-primary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/course2.jpg" class="card-img-top" alt="Course 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Course Title 2</h5>
+                            <p class="card-text">Short description of Course 2.</p>
+                            <a href="view-course.php?course_id=2" class="btn btn-primary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/course3.jpg" class="card-img-top" alt="Course 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Course Title 3</h5>
+                            <p class="card-text">Short description of Course 3.</p>
+                            <a href="view-course.php?course_id=3" class="btn btn-primary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<br><br>
-	<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-					<h1>Our Courses</h1>
-					<p>Choose what you want to pursue from the plethora of courses we offer—all for free!</p>
-				</div>
-			</div>
+        <!-- Course Categories Section -->
+        <div class="mt-5">
+            <h2 class="text-center">Browse by Course Category</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="images/category1.jpg" class="card-img-top" alt="Category 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Technology</h5>
+                            <a href="courses.php?category=technology" class="btn btn-secondary">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="images/category2.jpg" class="card-img-top" alt="Category 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Business</h5>
+                            <a href="courses.php?category=business" class="btn btn-secondary">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="images/category3.jpg" class="card-img-top" alt="Category 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Health</h5>
+                            <a href="courses.php?category=health" class="btn btn-secondary">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="images/category4.jpg" class="card-img-top" alt="Category 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Arts</h5>
+                            <a href="courses.php?category=arts" class="btn btn-secondary">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-			<div class="table-responsive animate-box">  
-                     <table id="messages-table" class="table table-hover table-bordered">  
-                          <thead>  
-                               <tr>  
-							   		<td><b>Course Name</b></td>
-							   		<td><b>Course Info</b></td>
-							   		<td><b>Course Category</b></td>
-									<td><b>Instructor</b></td>
-									<td><b>View</b></td>
-                               </tr>  
-                          </thead>  
+        <!-- Testimonials Section -->
+        <div class="mt-5">
+            <h2 class="text-center">What Our Students Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"OpenLearn has transformed my learning experience!"</p>
+                            <footer class="blockquote-footer">Student Name 1</footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"I love the variety of courses available!"</p>
+                            <footer class="blockquote-footer">Student Name 2</footer>
+                        </div>                
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">"The instructors are knowledgeable and supportive!"</p>
+                            <footer class="blockquote-footer">Student Name 3</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-						 <tbody>
+        <!-- FAQ Section -->
+        <div class="mt-5">
+            <h2 class="text-center">Frequently Asked Questions (FAQ)</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                            What courses are available on OpenLearn?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            OpenLearn offers courses in various categories, including Technology, Business, Health, Arts, and more.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                            How can I sign up for a course?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can sign up for any course by clicking on the "Enroll Now" button on the course page.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqThree">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                            Are the courses free?
+                        </button>
+                    </h2>
+                    <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, all courses on OpenLearn are completely free to access and complete.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-						  <?php  
-						  
-							$query_join = "SELECT courses.course_id, courses.course_name, courses.course_info, courses.course_category, instructor.name, instructor.id
-							FROM courses
-							INNER JOIN instructor ON courses.instructor_id=instructor.id;";
-						  	$execute_course_query = mysqli_query($link, $query_join);
-						  
-							while ($course_row = mysqli_fetch_assoc($execute_course_query)) {
-						  		echo "
-								  <tr> 
-									  <td>{$course_row['course_name']}</td>
-									  <td>{$course_row['course_info']}</td>
-									  <td>{$course_row['course_category']}</td>
-									  <td><a href='profile.php?inst_id=".$course_row['id']."'>".$course_row['name']."</a></td>
-									  <td><a target='_blank' href='view-course.php?course_id=".$course_row['course_id']."'><button class='btn btn-primary'><i class='fa fa-eye'></i>&nbsp;&nbsp; View</button></a></td>
-								  </tr>
-						
-						  		";
-							}
+        <!-- Newsletter Section -->
+        <div class="mt-5 text-center">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with new courses and news by subscribing to our newsletter.</p>
+            <form class="form-inline justify-content-center">
+                <input type="email" class="form-control mb-2 mr-sm-2" id="newsletterEmail" placeholder="Enter your email">
+                <button type="submit" class="btn btn-info mb-2">Subscribe</button>
+            </form>
+        </div>
 
-						  ?>
-						   
-						</tbody>
-                     </table>  
-                </div>  
+        <!-- Call to Action Section -->
+        <div class="mt-5 text-center">
+            <h2>Join Us Today!</h2>
+            <p>Sign up now to start your learning journey with OpenLearn.</p>
+            <a href="signup.php" class="btn btn-success btn-lg">Create an Account</a>
+        </div>
+    </div>
 
-	</div>
-	
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5 py-3">
+        <div class="container text-center">
+            <p>&copy; 2025 OpenLearn. All Rights Reserved.</p>
+            <p>
+                <a href="privacy.php" class="text-white">Privacy Policy</a> | 
+                <a href="terms.php" class="text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
 
-	<br><br><br><br><br><br>
-
-
-	<footer id="fh5co-footer" role="contentinfo" style="background-image: url(images/mountain.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-3 fh5co-widget">
-					<h3>About OpenLearn</h3>
-					<p>OpenLearn is a global marketplace for learning and teaching online where students are mastering new skills and achieving their goals by learning from an extensive library of over 55,000 courses taught by expert instructors.</p>
-				</div>
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
-					<h3>Learning</h3>
-					<ul class="fh5co-footer-links">
-						<li><a href="#">Course</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Contact</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Meetups</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
-					<h3>Learn &amp; Grow</h3>
-					<ul class="fh5co-footer-links">
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Testimonials</a></li>
-						<li><a href="#">Handbook</a></li>
-						<li><a href="#">Held Desk</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
-					<h3>Engage us</h3>
-					<ul class="fh5co-footer-links">
-						<li><a href="#">Marketing</a></li>
-						<li><a href="#">Visual Assistant</a></li>
-						<li><a href="#">System Analysis</a></li>
-						<li><a href="#">Advertise</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
-					<h3>Legal</h3>
-					<ul class="fh5co-footer-links">
-						<li><a href="#">Find Designers</a></li>
-						<li><a href="#">Find Developers</a></li>
-						<li><a href="#">Teams</a></li>
-						<li><a href="#">Advertise</a></li>
-						<li><a href="#">API</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12 text-center">
-					<p>
-						<small class="block">&copy; 2017 OpenLearn, Inc.&nbsp;&nbsp;All Rights Reserved.</small>
-						<small class="block">Designed by <a href="https://www.iproject.com.ng" target="_blank">eCuzzy</a>.</small>
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</footer>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-	<script src="assets/jquery.validate.min.js"></script>
-	<script src="js/additional-methods.js"></script>
-	<script src="js/extension.js"></script> <!--Message is validated and sent-->
-	<script src="login.js"></script>
-
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
-	<!-- countTo -->
-	<script src="js/jquery.countTo.js"></script>
-	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
-	<!-- Count Down -->
-	<script src="js/simplyCountdown.js"></script>
-	<!-- Main -->
-	<script src="js/main.js"></script>
-
-	<!--DataTables plugin -->
-	<script>  
- 		$(document).ready(function(){  
-      	$('#messages-table').DataTable();  
- 		});  
-	 </script>
-
+    <!-- Add Bootstrap JS and any other scripts you need -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
